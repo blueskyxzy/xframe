@@ -13,7 +13,6 @@ import org.springframework.web.client.RestTemplate;
  * Created by xzy on 2020/3/31  .
  */
 
-@RefreshScope
 @SpringBootApplication
 @EnableFeignClients
 //@ComponentScan(basePackages={"com.xzy.xframe.api"})

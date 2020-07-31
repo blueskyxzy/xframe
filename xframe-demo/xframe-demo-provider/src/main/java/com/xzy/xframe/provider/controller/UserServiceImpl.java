@@ -7,6 +7,7 @@ import com.alibaba.nacos.api.naming.pojo.Instance;
 import com.xzy.xframe.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +22,7 @@ import java.util.List;
  */
 
 @RestController
+@RefreshScope
 public class UserServiceImpl implements UserService {
 
     @NacosInjected
@@ -37,19 +39,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @GetMapping("/getUser")
-    public String getUser(Long userId){
-        return "服务提供者 getUser:" + userId + ",port:" + serverPort;
+    public String getUser(Long id){
+        return "服务提供者 getUser:" + id + ",port:" + serverPort;
     }
 
     @GetMapping("/getNacosConfig")
     public String getNacosConfig(){
         return "getNacosConfig userHost:" + userId + ",userName:" + userName;
-    }
-
-    @GetMapping("/getInstance")
-    @ResponseBody
-    public List<Instance> getInstance(@RequestParam String serviceName) throws NacosException {
-        return namingService.getAllInstances(serviceName);
     }
 
 }

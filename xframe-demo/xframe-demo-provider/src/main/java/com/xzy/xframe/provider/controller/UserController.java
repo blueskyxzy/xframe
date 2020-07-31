@@ -30,20 +30,14 @@ public class UserController {
     @Value("${user.name}")
     private String userName;
 
-    @RequestMapping(value = "/userTest", method = RequestMethod.GET)
-    public String getUserTest(Long userId){
-        return "服务提供者 getUser:" + userId + ",port:" + serverPort;
+    @GetMapping("/userTest")
+    public String getUserTest(){
+        return "服务提供者 getUser:" + ",port:" + serverPort;
     }
 
     @GetMapping("/getNacosConfigTest")
     public String getNacosConfig(){
         return "getNacosConfig userHost:" + userId + ",userName:" + userName;
-    }
-
-    @GetMapping("/getInstanceTest")
-    @ResponseBody
-    public List<Instance> getInstance(@RequestParam String serviceName) throws NacosException {
-        return namingService.getAllInstances(serviceName);
     }
 
 }

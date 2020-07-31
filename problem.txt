@@ -1,4 +1,8 @@
 1.修改nacos配置，@RefreshScope无效，没有刷新配置
+@解决：RefreshScope注解放在接口controller类上
 
 2.sprinboot选用2.2.8版本，部分mapper接口 400没有加载到spring上。
-解决：降版本到2.0.0
+解决：可能是兼容问题 降版本到2.0.0
+
+3.部分处理接口映射成功了但请求失败400，404
+nacos config 的 bootstrap.properties的 spring.application.name配置修改为dataId ,应用名一致
