@@ -7,3 +7,6 @@
 *.iml
 out
 gen
+/xframe-core/xframe-config/xframe-config-nacos/target/
+/xframe-demo/xframe-demo-provider/target/classes/
+/xframe-core/xframe-common/target/
