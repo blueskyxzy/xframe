@@ -1,0 +1,4 @@
+1.修改nacos配置，@RefreshScope无效，没有刷新配置
+
+2.sprinboot选用2.2.8版本，部分mapper接口 400没有加载到spring上。
+解决：降版本到2.0.0
