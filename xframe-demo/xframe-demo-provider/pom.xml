@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.xzy</groupId>
+        <artifactId>xframe-demo</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <groupId>com.xzy</groupId>
+    <artifactId>xframe-demo-provider</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.xzy</groupId>
+            <artifactId>xframe-demo-interface</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+<!--    <build>-->
+<!--        <finalName>${project.artifactId}-${project.version}</finalName>-->
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>src/main/webapp</directory>-->
+<!--            </resource>-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                &lt;!&ndash; 可以使用系统属性或者项目属性的值替换资源文件 &ndash;&gt;-->
+<!--                <filtering>true</filtering>-->
+<!--            </resource>-->
+<!--            &lt;!&ndash; java 目录可以识别到 xml 文件 &ndash;&gt;-->
+<!--            <resource>-->
+<!--                <directory>src/main/java</directory>-->
+<!--                <includes>-->
+<!--                    <include>**/*.xml</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+<!--        </resources>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--&lt;!&ndash;                <version>${spring.boot.version}</version>&ndash;&gt;-->
+<!--                <configuration>-->
+<!--                    <fork>true</fork>-->
+<!--                </configuration>-->
+<!--                &lt;!&ndash; 使用 spring-boot-dependencies 代替 spring-boot-starter-parent 的需要加，不然在服务器启动时会报 没有主清单属性 错误 &ndash;&gt;-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>repackage</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+<!--            &lt;!&ndash; 跳过单元测试 暂时删除 &ndash;&gt;-->
+<!--        </plugins>-->
+<!--    </build>-->
+</project>

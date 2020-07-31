@@ -1,0 +1,25 @@
+{
+  "groups": [
+    {
+      "name": "frame.jwt",
+      "type": "com.frame.base.common.utils.JwtUtils",
+      "sourceType": "com.frame.base.common.utils.JwtUtils"
+    }
+  ],
+  "properties": [
+    {
+      "name": "frame.jwt.expire",
+      "type": "java.lang.Integer",
+      "description": "单位秒",
+      "sourceType": "com.frame.base.common.utils.JwtUtils",
+      "defaultValue": 0
+    },
+    {
+      "name": "frame.jwt.secret",
+      "type": "java.lang.String",
+      "description": "加密秘钥",
+      "sourceType": "com.frame.base.common.utils.JwtUtils"
+    }
+  ],
+  "hints": []
+}
