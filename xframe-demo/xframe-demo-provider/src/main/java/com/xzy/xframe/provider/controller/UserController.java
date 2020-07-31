@@ -18,9 +18,6 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    @NacosInjected
-    private NamingService namingService;
-
     @Value("${server.port}")
     private String serverPort;
 

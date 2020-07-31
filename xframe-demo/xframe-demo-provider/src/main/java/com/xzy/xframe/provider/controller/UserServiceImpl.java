@@ -25,9 +25,6 @@ import java.util.List;
 @RefreshScope
 public class UserServiceImpl implements UserService {
 
-    @NacosInjected
-    private NamingService namingService;
-
     @Value("${server.port}")
     private String serverPort;
 
