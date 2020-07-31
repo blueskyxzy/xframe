@@ -2,12 +2,13 @@ package com.xzy.xframe.provider;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 
 /**
  * Created by xzy on 2020/3/31  .
  */
 
+@RefreshScope
 @SpringBootApplication
 public class UserApplication {
 
