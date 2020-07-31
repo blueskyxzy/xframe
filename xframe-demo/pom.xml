@@ -71,16 +71,15 @@
             <version>1.0.0</version>
         </dependency>
         <dependency>
+            <groupId>com.xzy</groupId>
+        <artifactId>xframe-config-nacos</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-<!--        &lt;!&ndash; Spring Boot dependencies &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter</artifactId>-->
-<!--            <version>${spring.boot.version}</version>-->
-<!--        </dependency>-->
     </dependencies>
 
     <!-- 阿里云maven仓库 -->

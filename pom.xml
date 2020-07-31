@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.2.0.RELEASE</version>
+    <version>2.0.0.RELEASE</version>
   </parent>
 
   <groupId>com.xzy</groupId>
@@ -34,7 +34,7 @@
     <!-- SpringCloud -->
     <spring.boot.cloud.version>Hoxton.SR5</spring.boot.cloud.version>
     <!-- SpringCloud Alibaba -->
-    <spring.boot.cloud.alibaba.version>2.2.0.RELEASE</spring.boot.cloud.alibaba.version>
+    <spring.boot.cloud.alibaba.version>2.0.0.RELEASE</spring.boot.cloud.alibaba.version>
     <!-- fastjson -->
     <fastjson.version>1.2.71</fastjson.version>
     <!-- jjwt -->
@@ -68,37 +68,7 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
-    <!-- 私服 下载
-    <repository>
-        <id>dev-nexus-releases</id>
-        <name>dev-nexus-releases</name>
-        <url>http://192.168.1.231:8081/nexus/content/repositories/thirdparty/</url>
-        <snapshots>
-            <enabled>false</enabled>
-        </snapshots>
-    </repository> -->
   </repositories>
-<!--  <pluginRepositories>-->
-<!--    <pluginRepository>-->
-<!--      <id>public</id>-->
-<!--      <name>aliyun nexus</name>-->
-<!--      <url>https://maven.aliyun.com/nexus/content/groups/public/</url>-->
-<!--      <releases>-->
-<!--        <enabled>true</enabled>-->
-<!--      </releases>-->
-<!--      <snapshots>-->
-<!--        <enabled>false</enabled>-->
-<!--      </snapshots>-->
-<!--    </pluginRepository>-->
-<!--  </pluginRepositories>-->
-<!--  <distributionManagement>-->
-<!--    &lt;!&ndash; 私服 上传-->
-<!--    <repository>-->
-<!--        <id>dev-nexus-releases</id>-->
-<!--        <name>dev-nexus-releases</name>-->
-<!--        <url>http://192.168.1.231:8081/nexus/content/repositories/thirdparty/</url>-->
-<!--    </repository> &ndash;&gt;-->
-<!--  </distributionManagement>-->
 
 
 </project>
