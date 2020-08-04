@@ -1,8 +1,21 @@
 1.修改nacos配置，@RefreshScope无效，没有刷新配置
-@解决：RefreshScope注解放在接口controller类上
+解决：RefreshScope注解放在接口controller类上
 
 2.sprinboot选用2.2.8版本，部分mapper接口 400没有加载到spring上。
 解决：可能是兼容问题 降版本到2.0.0
 
 3.部分处理接口映射成功了但请求失败400，404
-nacos config 的 bootstrap.properties的 spring.application.name配置修改为dataId ,应用名一致
+解决：nacos config 的 bootstrap.properties的 spring.application.name配置修改为dataId ,应用名一致
+
+4.整合sentinel报错
+Description:
+Parameter 0 of method modifyRequestBodyGatewayFilterFactory in org.springframework.cloud.gateway.config.GatewayAutoConfiguration required a bean of type 'org.springframework.http.codec.ServerCodecConfigurer' that could not be found.
+Action:
+Consider defining a bean of type 'org.springframework.http.codec.ServerCodecConfigurer' in your configuration.
+
+解决：spring-boot-starter-web和spring-cloud-starter-gateway中的web版本冲突
+     删除代码中的spring-boot-starter-web依赖
+
+
+5.引入sentinel admin无效
+需要接口有一定访问量，向控制台发送心跳包

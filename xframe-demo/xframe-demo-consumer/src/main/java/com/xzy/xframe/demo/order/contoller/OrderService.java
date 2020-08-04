@@ -1,5 +1,9 @@
 package com.xzy.xframe.demo.order.contoller;
 
+import com.alibaba.csp.sentinel.Entry;
+import com.alibaba.csp.sentinel.EntryType;
+import com.alibaba.csp.sentinel.SphU;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.xzy.xframe.api.UserService;
 import com.xzy.xframe.demo.order.openfeign.UserOpenFeign;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +11,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import com.xzy.xframe.demo.order.strategy.RotationStrategy;
@@ -40,7 +45,7 @@ public class OrderService {
 //    private UserService userService;
 
     @GetMapping("/orderUser")
-    public Object getOrderUser(){
+    public Object getOrderUser() {
         // 通过服务名称从注册中心获取集群列表地址
         List<ServiceInstance> instances = discoveryClient.getInstances("xzynacos-user");
         // 负载均衡只获取一个服务实例来调  ,这里通过策略模式优化
@@ -54,14 +59,14 @@ public class OrderService {
     }
 
     @GetMapping("/orderRibbon")
-    public Object getOrderRibbon(){
+    public Object getOrderRibbon() {
         // Ribbon负载均衡  restTemplate需要@loadBlanced初始化
-        String result = restTemplate.getForObject( "http://xzynacos-user/getUser?userId=1", String.class);
+        String result = restTemplate.getForObject("http://xzynacos-user/getUser?userId=1", String.class);
         return result;
     }
 
     @GetMapping("/orderBalanced")
-    public Object getOrderBalanced(){
+    public Object getOrderBalanced() {
         // loadBalanceClient,     加上@LoadBalanced的uri解析的http:后面就是服务名而不是IP地址了，用restTemplate.getForObject调用会500
         ServiceInstance service = loadBalancerClient.choose("xzynacos-user");
         return service;
@@ -71,14 +76,15 @@ public class OrderService {
      * 基于openFeign客户端调用服务
      */
     @GetMapping("/getUser")
-    public Object getGetUser(){
+    public Object getGetUser() {
         String result = userOpenFeign.getUser(1L);
         return result;
     }
 
-/*
-    */
-/**
+    /*
+     */
+
+    /**
      * 基于openFeign客户端调用服务
      *//*
 
@@ -88,6 +94,64 @@ public class OrderService {
         return result;
     }
 */
+
+//
+//    /**
+//     * 秒杀接口
+//     *
+//     * @return
+//     */
+//    @RequestMapping("/seckill")
+//    public String seckill(Long userId) {
+//        Entry entry = null;
+//        try {
+//            // 对我们的userId的参数实现埋点
+//            entry = SphU.entry(GET_SECKULL_RESOURCE_NAME, EntryType.IN,
+//                    1, userId);
+//            return "用户秒杀成功" + userId;
+//        } catch (Exception e) {
+//            return "用户秒杀失败,您访问的频率过多。";
+//        } finally {
+//            if (entry != null) {
+//                entry.exit();
+//            }
+//
+//        }
+//
+//    }
+
+    /**
+     * 定义我们的秒杀参数限流的规则
+     */
+    private static final String GET_SECKULL_RESOURCE_NAME = "GET_SECKULL";
+    /**
+     * 提前创建限流热词规则 基于qps
+     */
+    @RequestMapping("/seckill")
+    @SentinelResource(value = "seckill", blockHandler = "seckillBlockHandler"
+            , fallback = "seckillFallback")
+    public String seckill(Long userId) {
+
+        try {
+            return "用户秒杀成功" + userId;
+        } catch (Exception e) {
+            return "当前的访问次数过多，请稍后重试!";
+        }
+
+    }
+
+
+    public String seckillBlockHandler(Long userId) {
+        return "当前的访问次数过多，请稍后重试!";
+    }
+
+    public String seckillFallback(Long userId) {
+        return "当前的访问次数过多，请稍后重试!";
+    }
+    /**
+     * blockHandler 限流出现异常执行的方法
+     * fallback 服务熔断降级错误或者1.6版本以后接口出现业务逻辑异常执行
+     */
 
 
 }

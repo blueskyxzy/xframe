@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by xzy on 2020/3/31  .
  */
 
-@FeignClient("xframe-demo-user")
+@FeignClient("xframe-demo-provider")
 public interface UserOpenFeign {
 
     @GetMapping("/getUser")
