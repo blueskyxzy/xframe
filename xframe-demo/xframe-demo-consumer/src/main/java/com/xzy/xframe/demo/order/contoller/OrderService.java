@@ -5,6 +5,7 @@ import com.alibaba.csp.sentinel.EntryType;
 import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.alibaba.csp.sentinel.slots.block.degrade.DegradeException;
 import com.xzy.xframe.api.UserService;
 import com.xzy.xframe.demo.order.openfeign.UserOpenFeign;
 import com.xzy.xframe.demo.order.service.TestService;
@@ -153,7 +154,8 @@ public class OrderService {
     }
 
     @RequestMapping(value = "/testExHandle")
-    @SentinelResource(value = "testExHandle")
+    @SentinelResource(value = "testExHandle", blockHandler = "seckillBlockHandler"
+            , fallback = "seckillFallback")
     public String testExHandle(Long userId) {
         testService.handleEx();
         return "用户秒杀成功, testExHandle";
