@@ -54,7 +54,7 @@ public class OrderService {
     @GetMapping("/orderUser")
     public Object getOrderUser() {
         // 通过服务名称从注册中心获取集群列表地址
-        List<ServiceInstance> instances = discoveryClient.getInstances("xzynacos-user");
+        List<ServiceInstance> instances = discoveryClient.getInstances("xframe-demo-provider");
         // 负载均衡只获取一个服务实例来调  ,这里通过策略模式优化
         // 轮询策略
         ServiceInstance service = rotationStrategy.getSingleService(instances);
@@ -68,14 +68,14 @@ public class OrderService {
     @GetMapping("/orderRibbon")
     public Object getOrderRibbon() {
         // Ribbon负载均衡  restTemplate需要@loadBlanced初始化
-        String result = restTemplate.getForObject("http://xzynacos-user/getUser?userId=1", String.class);
+        String result = restTemplate.getForObject("http://xframe-demo-provider/getUser?userId=1", String.class);
         return result;
     }
 
     @GetMapping("/orderBalanced")
     public Object getOrderBalanced() {
         // loadBalanceClient,     加上@LoadBalanced的uri解析的http:后面就是服务名而不是IP地址了，用restTemplate.getForObject调用会500
-        ServiceInstance service = loadBalancerClient.choose("xzynacos-user");
+        ServiceInstance service = loadBalancerClient.choose("xframe-demo-provider");
         return service;
     }
 
