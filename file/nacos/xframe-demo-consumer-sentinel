@@ -1,0 +1,90 @@
+[
+    {
+        "app": "xframe-demo-consumer",
+        "clusterConfig": {
+            "fallbackToLocalWhenFail": true,
+            "sampleCount": 10,
+            "strategy": 0,
+            "thresholdType": 0,
+            "windowIntervalMs": 1000
+        },
+        "clusterMode": false,
+        "controlBehavior": 0,
+        "count": 1.0,
+        "gmtCreate": 1554541390168,
+        "gmtModified": 1554543573961,
+        "grade": 1,
+        "id": 4,
+        "ip": "172.0.0.1",
+        "limitApp": "default",
+        "port": 8731,
+        "resource": "/getUser",
+        "strategy": 0
+    },
+    {
+        "app": "xframe-demo-consumer",
+        "clusterConfig": {
+            "fallbackToLocalWhenFail": true,
+            "sampleCount": 10,
+            "strategy": 0,
+            "thresholdType": 0,
+            "windowIntervalMs": 1000
+        },
+        "clusterMode": false,
+        "controlBehavior": 0,
+        "count": 1.0,
+        "gmtCreate": 1554541390168,
+        "gmtModified": 1554543573961,
+        "grade": 1,
+        "id": 4,
+        "ip": "172.0.0.1",
+        "limitApp": "default",
+        "port": 8731,
+        "resource": "seckill",
+        "strategy": 0
+    },
+    {
+        "app": "xframe-demo-consumer",
+        "clusterConfig": {
+            "fallbackToLocalWhenFail": true,
+            "sampleCount": 10,
+            "strategy": 0,
+            "thresholdType": 0,
+            "windowIntervalMs": 1000
+        },
+        "clusterMode": false,
+        "controlBehavior": 0,
+        "count": 1.0,
+        "gmtCreate": 1554541390168,
+        "gmtModified": 1554543573961,
+        "grade": 1,
+        "id": 4,
+        "ip": "172.0.0.1",
+        "limitApp": "default",
+        "port": 8731,
+        "resource": "doSomeThing",
+        "strategy": 0
+    },
+        {
+        "app": "xframe-demo-consumer",
+        "clusterConfig": {
+            "fallbackToLocalWhenFail": true,
+            "sampleCount": 10,
+            "strategy": 0,
+            "thresholdType": 0,
+            "windowIntervalMs": 1000
+        },
+        "clusterMode": false,
+        "controlBehavior": 0,
+        "count": 1.0,
+        "gmtCreate": 1554541390168,
+        "gmtModified": 1554543573961,
+        "grade": 1,
+        "id": 4,
+        "ip": "172.0.0.1",
+        "limitApp": "default",
+        "port": 8731,
+        "resource": "testExHandle",
+        "strategy": 0
+    }
+]

@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    # 服务名称
+    name: xframe-demo-provider
+  cloud:
+    nacos:
+      discovery:
+        # 注册中心地址
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
