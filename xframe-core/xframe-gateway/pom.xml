@@ -15,6 +15,7 @@
 
   <modules>
     <module>xframe-gateway-sentinel</module>
+    <module>xframe-gateway-common</module>
   </modules>
 
   <dependencies>

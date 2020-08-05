@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.xzy.xframe.gateway.common.filter.RequestTimeFilter
