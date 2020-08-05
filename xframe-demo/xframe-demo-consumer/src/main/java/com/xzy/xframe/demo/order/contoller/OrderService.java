@@ -4,8 +4,10 @@ import com.alibaba.csp.sentinel.Entry;
 import com.alibaba.csp.sentinel.EntryType;
 import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.xzy.xframe.api.UserService;
 import com.xzy.xframe.demo.order.openfeign.UserOpenFeign;
+import com.xzy.xframe.demo.order.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -40,6 +42,10 @@ public class OrderService {
 
     @Autowired
     private UserOpenFeign userOpenFeign;
+
+    @Autowired
+    private TestService testService;
+
 
 //    @Autowired
 //    private UserService userService;
@@ -119,11 +125,11 @@ public class OrderService {
 //        }
 //
 //    }
-
     /**
      * 定义我们的秒杀参数限流的规则
      */
     private static final String GET_SECKULL_RESOURCE_NAME = "GET_SECKULL";
+
     /**
      * 提前创建限流热词规则 基于qps
      */
@@ -131,27 +137,38 @@ public class OrderService {
     @SentinelResource(value = "seckill", blockHandler = "seckillBlockHandler"
             , fallback = "seckillFallback")
     public String seckill(Long userId) {
-
-        try {
-            return "用户秒杀成功" + userId;
-        } catch (Exception e) {
-            return "当前的访问次数过多，请稍后重试!";
-        }
-
+        return "用户秒杀成功" + userId;
     }
 
-
-    public String seckillBlockHandler(Long userId) {
-        return "当前的访问次数过多，请稍后重试!";
+    /**
+     * 测试 @SentinelResource
+     * 应用 @SentinelResource 注解，必须开启对应的切面，引入SentinelResourceAspect。
+     */
+    @RequestMapping("/testSR")
+    @SentinelResource(value = "testSR", blockHandler = "seckillBlockHandler"
+            , fallback = "seckillFallback")
+    public String testSR(Long userId) {
+        String testSR = testService.doSomeThing("testSR");
+        return "用户秒杀成功" + userId + ":" + testSR;
     }
 
-    public String seckillFallback(Long userId) {
-        return "当前的访问次数过多，请稍后重试!";
+    @RequestMapping(value = "/testExHandle")
+    @SentinelResource(value = "testExHandle")
+    public String testExHandle(Long userId) {
+        testService.handleEx();
+        return "用户秒杀成功, testExHandle";
     }
+
     /**
      * blockHandler 限流出现异常执行的方法
      * fallback 服务熔断降级错误或者1.6版本以后接口出现业务逻辑异常执行
      */
+    public String seckillBlockHandler(Long userId, BlockException e) {
+        return "当前的访问次数过多，请稍后重试! BlockHandler";
+    }
 
+    public String seckillFallback(Long userId, Throwable e) {
+        return "当前的访问次数过多，请稍后重试! Fallback";
+    }
 
 }
