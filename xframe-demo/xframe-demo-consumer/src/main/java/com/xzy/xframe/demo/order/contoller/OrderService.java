@@ -10,7 +10,6 @@ import com.sun.xml.internal.xsom.parser.AnnotationContext;
 import com.xzy.xframe.api.UserService;
 import com.xzy.xframe.demo.order.openfeign.UserOpenFeign;
 import com.xzy.xframe.demo.order.service.TestService;
-import com.xzy.xframe.gateway.common.filter.WBListIpGlobalFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;

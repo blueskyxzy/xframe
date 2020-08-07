@@ -21,7 +21,7 @@ public class ConsumerGlobalFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        String ip = getIpAddress((ServerHttpRequest) exchange.getRequest());
+        log.info("consumerGolbalFilter");
         return chain.filter(exchange);
     }
 
