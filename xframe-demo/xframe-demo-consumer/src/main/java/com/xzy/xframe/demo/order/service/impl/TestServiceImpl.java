@@ -20,6 +20,6 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public void handleEx() {
-        throw new RuntimeException("发生异常");
+//        throw new RuntimeException("发生异常");
     }
 }

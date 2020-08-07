@@ -1,4 +1,4 @@
-package com.xzy.gateway.sentinel;
+package com.xzy.config.nacos;
 
 import cn.hutool.http.HttpStatus;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowException;

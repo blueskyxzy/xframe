@@ -1,2 +1,8 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.xzy.xframe.gateway.common.filter.RequestTimeFilter
+com.xzy.xframe.gateway.common.filter.RequestTimeFilter,\
+com.xzy.xframe.gateway.common.filter.WBListIpGlobalFilter,\
+com.xzy.xframe.gateway.common.filter.XssCleanRuleUtils,\
+com.xzy.xframe.gateway.common.filter.XssRequestGlobalFilter,\
+com.xzy.xframe.gateway.common.filter.XssResponseGlobalFilter,\
+com.xzy.xframe.gateway.common.filter.CorsGlobalFilter,\
+com.xzy.xframe.gateway.common.config.WBIpListProperties

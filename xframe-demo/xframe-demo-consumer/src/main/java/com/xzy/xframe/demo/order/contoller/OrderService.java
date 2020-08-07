@@ -6,13 +6,16 @@ import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeException;
+import com.sun.xml.internal.xsom.parser.AnnotationContext;
 import com.xzy.xframe.api.UserService;
 import com.xzy.xframe.demo.order.openfeign.UserOpenFeign;
 import com.xzy.xframe.demo.order.service.TestService;
+import com.xzy.xframe.gateway.common.filter.WBListIpGlobalFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -156,7 +159,9 @@ public class OrderService {
     @RequestMapping(value = "/testExHandle")
     @SentinelResource(value = "testExHandle", blockHandler = "seckillBlockHandler"
             , fallback = "seckillFallback")
-    public String testExHandle(Long userId) {
+    public String testExHandle(String str) {
+//        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(WBListIpGlobalFilter.class);
+//        Object wBListIpGlobalFilter = annotationConfigApplicationContext.getBean("wBListIpGlobalFilter");
         testService.handleEx();
         return "用户秒杀成功, testExHandle";
     }
