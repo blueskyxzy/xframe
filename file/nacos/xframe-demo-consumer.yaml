@@ -73,8 +73,8 @@ nacos:
     group: DEFAULT_GROUP
     dataId: nacos‐config.yaml
 
-
-url:  #需要进行过滤的白名单
+# 需要过滤的黑白名单 url
+url:
   whiteEnable: true
   blackEnable: true
   whitelist:
@@ -88,7 +88,8 @@ url:  #需要进行过滤的白名单
   blacklist:
     - /test
 
-ip:  #需要进行过滤的白名单
+# 需要过滤的黑白名单 ip
+ip:
   whiteEnable: true
   blackEnable: true
   whitelist:
