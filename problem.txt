@@ -19,4 +19,5 @@ Consider defining a bean of type 'org.springframework.http.codec.ServerCodecConf
 5.引入sentinel admin无效
 需要接口有一定访问量，向控制台发送心跳包
 
-6.
+6.gateway filter配置了，但只对routes的地址过滤，不是全部过滤吗？
+

@@ -50,6 +50,7 @@ public class XssRequestGlobalFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain){
         // grab configuration from Config object
         log.debug("----自定义防XSS攻击网关全局过滤器生效----");
+        log.info("XssRequestGlobalFilter");
         ServerHttpRequest serverHttpRequest = exchange.getRequest();
         HttpMethod method = serverHttpRequest.getMethod();
         String contentType = serverHttpRequest.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE);

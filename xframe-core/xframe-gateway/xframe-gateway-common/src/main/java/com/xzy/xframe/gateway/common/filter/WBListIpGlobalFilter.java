@@ -30,6 +30,7 @@ public class WBListIpGlobalFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        log.info("WBListIpGlobalFilter");
         String ip = exchange.getRequest().getRemoteAddress().getAddress().toString();
 //        String ip = getIpAddress((ServerHttpRequest) exchange.getRequest());
         if (properties == null){
