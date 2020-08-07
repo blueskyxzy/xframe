@@ -8,11 +8,44 @@ spring:
         # 注册中心地址
         server-addr: 127.0.0.1:8848
     gateway:
+      discovery:
+        locator:
+          # 让 gateway 通过服务发现组件找到其他微服务
+          enabled: true
+      # routes:
+      #   - id: gateway-service
+      #     uri: https://baidu.com
+      #     predicates:
+      #      - Path=/baidu
+      #       # 路由策略
       routes:
-        - id: gateway-service
-          uri: https://baidu.com
+        ###根据我们的服务名称查找地址实现调用
+        - id: order
+          ####转发http://www.mayikt.com/
+          uri: http://localhost:8090/testExHandle
+          filters:
+            - StripPrefix=1
+          ###匹配规则
           predicates:
-            - Path=/baidu
+            - Path=/order/**
+        #        - id: mayikt
+        #          uri: http://www.mayikt.com/
+        #          ###匹配规则
+        #          predicates:
+        #            - After=2017-01-20T17:42:47.789-07:00[America/Denver]
+        #        - id: meite
+        #          uri: http://www.mayikt.com/
+        #          ###匹配规则
+        #          predicates:
+        #            - Host=meite.mayikt.com
+        - id: weight_order
+          uri: lb://meitemayikt-order
+          predicates:
+            - Weight=group1,2
+        - id: weight_member
+          uri: lb://mayikt-member
+          predicates:
+            - Weight=group1,1
     sentinel:
       transport:
         dashboard: localhost:8080
@@ -25,7 +58,6 @@ spring:
             groupId: DEFAULT_GROUP
             ruleType: flow
 
-
 # 8090,8091。。.订单服务
 server:
   port: 8090
@@ -33,3 +65,36 @@ server:
 feign:
   sentinel:
     enabled: true
+
+nacos:
+  default:
+    serverAddr: 127.0.0.1:8848
+    namespace: public
+    group: DEFAULT_GROUP
+    dataId: nacos‐config.yaml
+
+
+url:  #需要进行过滤的白名单
+  whiteEnable: true
+  blackEnable: true
+  whitelist:
+    - /api/search
+    - /api/auth
+    - /api/user/register
+    - /api/user/check
+    - /api/user/code
+    - /api/item
+
+  blacklist:
+    - /test
+
+ip:  #需要进行过滤的白名单
+  whiteEnable: true
+  blackEnable: true
+  whitelist:
+    - 172.11.1.1
+    - 172.11.1.2
+
+  blacklist:
+    - 172.168.1.1
+    - 172.168.1.2
