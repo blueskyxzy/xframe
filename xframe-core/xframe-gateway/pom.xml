@@ -13,5 +13,28 @@
   <version>1.0.0</version>
   <packaging>pom</packaging>
 
+  <modules>
+    <module>xframe-gateway-sentinel</module>
+    <module>xframe-gateway-common</module>
+  </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-gateway</artifactId>
+      <version>2.0.0.RELEASE</version>
+      <!--            <exclusions>-->
+      <!--                <exclusion>-->
+      <!--                    <groupId>org.springframework.boot</groupId>-->
+      <!--                    <artifactId>spring-boot-starter-web</artifactId>-->
+      <!--                </exclusion>-->
+      <!--            </exclusions>-->
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.csp</groupId>
+      <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
+      <version>1.7.2</version>
+    </dependency>
+  </dependencies>
 
 </project>

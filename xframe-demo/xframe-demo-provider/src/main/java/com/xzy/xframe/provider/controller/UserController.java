@@ -1,13 +1,8 @@
 package com.xzy.xframe.provider.controller;
 
-import com.alibaba.nacos.api.annotation.NacosInjected;
-import com.alibaba.nacos.api.exception.NacosException;
-import com.alibaba.nacos.api.naming.NamingService;
-import com.alibaba.nacos.api.naming.pojo.Instance;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 /**
  *
@@ -17,9 +12,6 @@ import java.util.List;
 
 @RestController
 public class UserController {
-
-    @NacosInjected
-    private NamingService namingService;
 
     @Value("${server.port}")
     private String serverPort;
