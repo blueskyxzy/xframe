@@ -1,3 +1,9 @@
+启动服务 mysql.server start
+nacos     sh startup.sh -m standalone
+sentinel admin
+es   ./bin/elasticsearch  需要修改config/elasticsearch.yaml 下的cluster-name: myes
+kibana  ./bin/kibana
+
 1.修改nacos配置，@RefreshScope无效，没有刷新配置
 解决：RefreshScope注解放在接口controller类上
 
@@ -20,4 +26,15 @@ Consider defining a bean of type 'org.springframework.http.codec.ServerCodecConf
 需要接口有一定访问量，向控制台发送心跳包
 
 6.gateway filter配置了，但只对routes的地址过滤，不是全部过滤吗？
+
+7.es配置启动报错
+ nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'elasticsearchClient' defined in class path resource [org/springframework/boot/autoconfigure/data/elasticsearch/ElasticsearchAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException
+ availableProcessors is already set to [8], rejecting [8
+解决方法：main启动类增加：System.setProperty("es.set.netty.runtime.available.processors", "false");
+
+8.es接口报错 Rejecting mapping update to [xzy] as the final mapping would have more than 1 type: [book, user]
+es6.0的版本不允许一个index下面有多个type，并且官方说是在接下来的7.0版本中会删掉type
+
+9.java.lang.IllegalStateException: Could not resolve view with name 'addBook'.
+处理返回错误，@Controller 改成 @RestController，支持返回json,string
 

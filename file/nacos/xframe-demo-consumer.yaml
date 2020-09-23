@@ -2,6 +2,13 @@ spring:
   application:
     # 服务名称
     name: xframe-demo-consumer
+  data:
+    elasticsearch:
+      ####集群名称
+      cluster-name: myes
+      ####地址
+      cluster-nodes: 127.0.0.1:9300
+
   cloud:
     nacos:
       discovery:

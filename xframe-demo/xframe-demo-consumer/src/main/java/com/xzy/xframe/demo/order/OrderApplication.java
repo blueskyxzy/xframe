@@ -7,6 +7,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
  * Created by xzy on 2020/3/31  .
  */
 
+@EnableElasticsearchRepositories(basePackages = { "com.xzy.xframe.demo.order.dao" })
 @SpringBootApplication
 @EnableFeignClients
 //@ComponentScan(basePackages={"com.xzy.xframe.api"})
@@ -21,6 +23,7 @@ import org.springframework.web.client.RestTemplate;
 public class OrderApplication {
 
     public static void main(String[] args){
+        System.setProperty("es.set.netty.runtime.available.processors", "false");
         SpringApplication.run(OrderApplication.class);
     }
 
