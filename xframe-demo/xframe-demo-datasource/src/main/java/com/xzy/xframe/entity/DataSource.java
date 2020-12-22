@@ -1,4 +1,4 @@
-package com.daoism.base.datasource.annotation;
+package com.xzy.xframe.entity;
 
 import java.lang.annotation.*;
 

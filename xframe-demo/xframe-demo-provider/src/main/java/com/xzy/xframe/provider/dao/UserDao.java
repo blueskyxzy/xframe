@@ -1,6 +1,6 @@
 package com.xzy.xframe.provider.dao;
 
-import com.xzy.xframe.provider.entity.User;
+import com.xzy.xframe.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

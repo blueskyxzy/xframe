@@ -5,13 +5,18 @@ import com.alibaba.csp.sentinel.EntryType;
 import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.frame.base.common.entity.BaseResp;
+import com.xzy.xframe.demo.order.dao.OrderDao;
 import com.xzy.xframe.demo.order.openfeign.UserOpenFeign;
 import com.xzy.xframe.demo.order.service.TestService;
+import com.xzy.xframe.entity.Order;
+import com.xzy.xframe.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,6 +50,9 @@ public class OrderService {
 
     @Autowired
     private TestService testService;
+
+    @Autowired
+    private OrderDao orderDao;
 
 
 //    @Autowired
@@ -81,7 +89,27 @@ public class OrderService {
     /**
      * 基于openFeign客户端调用服务
      */
-    @GetMapping("/getUser")
+    @GetMapping("/testTransactional")
+    @Transactional(rollbackFor = Exception.class)
+    public BaseResp test1() throws Exception {
+        User user = new User();
+        user.setId(1L);
+        user.setMobile("222");
+        BaseResp result = userOpenFeign.userPut(user);
+        Order order = new Order();
+        order.setId(1L);
+        order.setUserName("222");
+        orderDao.updateByPrimaryKeySelective(order);
+        if (true){
+            throw new Exception("ex");
+        }
+        return BaseResp.ok();
+    }
+
+    /**
+     * 基于openFeign客户端调用服务
+     */
+    @GetMapping("/test")
     public Object getGetUser() {
         String result = userOpenFeign.getUser(1L);
         return result;

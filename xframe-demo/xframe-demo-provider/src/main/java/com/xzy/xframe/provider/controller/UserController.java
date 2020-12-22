@@ -1,7 +1,7 @@
 package com.xzy.xframe.provider.controller;
 
 import com.frame.base.common.entity.BaseResp;
-import com.xzy.xframe.provider.entity.User;
+import com.xzy.xframe.entity.User;
 import com.xzy.xframe.provider.service.UserDbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,6 +43,12 @@ public class UserController {
     public BaseResp<User> getUserName(@RequestParam("id") Long id){
         User user = userDbService.getUser(id);
         return BaseResp.ok(user);
+    }
+
+    @PutMapping("/user")
+    public BaseResp updateUser(@RequestBody User user){
+        userDbService.updateUser(user);
+        return BaseResp.ok();
     }
 
 }

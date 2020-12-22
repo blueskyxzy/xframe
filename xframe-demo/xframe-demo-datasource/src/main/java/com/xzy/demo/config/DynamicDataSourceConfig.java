@@ -1,9 +1,9 @@
-package com.daoism.base.datasource.config;
+package com.xzy.demo.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
-import com.daoism.base.datasource.DataSourceNames;
-import com.daoism.base.datasource.DynamicDataSource;
+import com.xzy.demo.DataSourceNames;
+import com.xzy.demo.DynamicDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

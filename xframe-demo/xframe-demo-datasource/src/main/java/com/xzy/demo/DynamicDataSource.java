@@ -1,4 +1,4 @@
-package com.daoism.base.datasource;
+package com.xzy.demo;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

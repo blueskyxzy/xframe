@@ -16,6 +16,7 @@
         <module>xframe-demo-provider</module>
         <module>xframe-demo-consumer</module>
         <module>xframe-demo-datasource</module>
+        <module>xframe-demo-entity</module>
     </modules>
 
     <properties>

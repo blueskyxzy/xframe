@@ -1,8 +1,8 @@
-package com.daoism.base.datasource.aspect;
+package com.xzy.demo.aspect;
 
-import com.daoism.base.datasource.DataSourceNames;
-import com.daoism.base.datasource.DynamicDataSource;
-import com.daoism.base.datasource.annotation.DataSource;
+import com.xzy.demo.DataSourceNames;
+import com.xzy.demo.DynamicDataSource;
+import com.xzy.xframe.entity.DataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
 @Component
 public class DataSourceAspect implements Ordered {
 
-    @Pointcut("@annotation(com.daoism.base.datasource.annotation.DataSource)")
+    @Pointcut("@annotation(com.xzy.xframe.entity.DataSource)")
     public void dataSourcePointCut() {
         // Do nothing
     }

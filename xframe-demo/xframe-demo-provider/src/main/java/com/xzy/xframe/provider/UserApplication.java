@@ -1,6 +1,6 @@
 package com.xzy.xframe.provider;
 
-import com.daoism.base.datasource.config.DynamicDataSourceConfig;
+import com.xzy.demo.config.DynamicDataSourceConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;

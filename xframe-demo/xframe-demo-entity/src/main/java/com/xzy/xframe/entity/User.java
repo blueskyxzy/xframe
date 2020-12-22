@@ -1,4 +1,4 @@
-package com.xzy.xframe.provider.entity;
+package com.xzy.xframe.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

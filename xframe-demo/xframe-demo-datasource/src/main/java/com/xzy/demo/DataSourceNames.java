@@ -1,4 +1,4 @@
-package com.daoism.base.datasource;
+package com.xzy.demo;
 
 /**
  * 增加多数据源，在此配置
