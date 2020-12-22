@@ -1,5 +1,9 @@
 package com.xzy.xframe.provider.controller;
 
+import com.frame.base.common.entity.BaseResp;
+import com.xzy.xframe.provider.entity.User;
+import com.xzy.xframe.provider.service.UserDbService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +26,9 @@ public class UserController {
     @Value("${user.name}")
     private String userName;
 
+    @Autowired
+    private UserDbService userDbService;
+
     @GetMapping("/userTest")
     public String getUserTest(){
         return "服务提供者 getUser:" + ",port:" + serverPort;
@@ -30,6 +37,12 @@ public class UserController {
     @GetMapping("/getNacosConfigTest")
     public String getNacosConfig(){
         return "getNacosConfig userHost:" + userId + ",userName:" + userName;
+    }
+
+    @GetMapping("/user")
+    public BaseResp<User> getUserName(@RequestParam("id") Long id){
+        User user = userDbService.getUser(id);
+        return BaseResp.ok(user);
     }
 
 }

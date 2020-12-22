@@ -20,6 +20,11 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.xzy</groupId>
+            <artifactId>xframe-demo-datasource</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

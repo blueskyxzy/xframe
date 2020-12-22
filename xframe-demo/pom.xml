@@ -15,7 +15,16 @@
         <module>xframe-demo-interface</module>
         <module>xframe-demo-provider</module>
         <module>xframe-demo-consumer</module>
+        <module>xframe-demo-datasource</module>
     </modules>
+
+    <properties>
+        <mybatis.version>1.3.2</mybatis.version>
+        <mybatisplus.spring.boot.version>1.0.5</mybatisplus.spring.boot.version>
+        <mybatisplus.version>2.3.1</mybatisplus.version>
+        <mysql.version>8.0.19</mysql.version>
+        <mssql.version>4.0</mssql.version>
+    </properties>
 
     <!-- import方式 -->
     <dependencyManagement>
@@ -105,6 +114,48 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatisplus-spring-boot-starter</artifactId>
+            <version>${mybatisplus.spring.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>${mybatisplus.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>mybatis</artifactId>
+                    <groupId>org.mybatis</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <!--<version>${mysql.version}</version>-->
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>mybatis</artifactId>
+                    <groupId>org.mybatis</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://nosec.org/home/detail/4587.html mybatis3.5.6之前的都有漏洞,依赖包都没升级,只能手动指定版本,等依赖包升级了再换回去 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.6</version>
         </dependency>
 <!--        服务链路追踪-->
 <!--        <dependency>-->

@@ -16,27 +16,32 @@
             <artifactId>xframe-demo-interface</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.xzy</groupId>
+            <artifactId>xframe-demo-datasource</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
-<!--    <build>-->
-<!--        <finalName>${project.artifactId}-${project.version}</finalName>-->
-<!--        <resources>-->
-<!--            <resource>-->
-<!--                <directory>src/main/webapp</directory>-->
-<!--            </resource>-->
-<!--            <resource>-->
-<!--                <directory>src/main/resources</directory>-->
-<!--                &lt;!&ndash; 可以使用系统属性或者项目属性的值替换资源文件 &ndash;&gt;-->
-<!--                <filtering>true</filtering>-->
-<!--            </resource>-->
-<!--            &lt;!&ndash; java 目录可以识别到 xml 文件 &ndash;&gt;-->
-<!--            <resource>-->
-<!--                <directory>src/main/java</directory>-->
-<!--                <includes>-->
-<!--                    <include>**/*.xml</include>-->
-<!--                </includes>-->
-<!--            </resource>-->
-<!--        </resources>-->
+    <build>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/webapp</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- 可以使用系统属性或者项目属性的值替换资源文件 -->
+                <filtering>true</filtering>
+            </resource>
+            <!-- java 目录可以识别到 xml 文件 -->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
 <!--        <plugins>-->
 <!--            <plugin>-->
 <!--                <groupId>org.springframework.boot</groupId>-->
@@ -56,5 +61,5 @@
 <!--            </plugin>-->
 <!--            &lt;!&ndash; 跳过单元测试 暂时删除 &ndash;&gt;-->
 <!--        </plugins>-->
-<!--    </build>-->
+    </build>
 </project>

@@ -38,3 +38,24 @@ es6.0的版本不允许一个index下面有多个type，并且官方说是在接
 9.java.lang.IllegalStateException: Could not resolve view with name 'addBook'.
 处理返回错误，@Controller 改成 @RestController，支持返回json,string
 
+10.多数据源配置报错
+Failed to auto-configure a DataSource: 'spring.datasource.url' is not specified and no embedded datasource could be auto-configured.
+Reason: Failed to determine a suitable driver class
+解决：
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@Import({DynamicDataSourceConfig.class})
+
+或者资源文件被过滤了 spring.profiles.active=datasource-dev,dev
+
+11.creating bean with name 'statViewServletRegistrationBean' defined in c。。。。。。
+由于druid需要servlet容器，而spring cloud gateway不能使用servlet，为此在配置文件中将stat-view-servlet 和 web-stat-filter 关闭
+
+12.Error creating bean with name 'com.xzy.config.nacos.NacosService': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'nacos.default.serverAddr' in value "${nacos.default.serverAddr}"
+
+13.   main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, xframe-demo-provider register ....     no server available
+
+14. Caused by: java.lang.ClassNotFoundException: org.springframework.boot.context.properties.ConfigurationPropertiesBean
+ 13和14是nacos版本和spring-cloud-alibaba-dependencies版本不匹配.具体看https://github.com/alibaba/spring-cloud-alibaba/wiki/版本说明
+
+15.BindingException: Invalid bound statement (not found):
+build resources 没有包含**/*.xml
